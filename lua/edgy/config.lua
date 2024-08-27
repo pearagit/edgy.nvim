@@ -58,7 +58,7 @@ local defaults = {
   -- buffer-local keymaps to be added to edgebar buffers.
   -- Existing buffer-local keymaps will never be overridden.
   -- Set to false to disable a builtin.
-  ---@type table<string, fun(win:Edgy.Window)|false>
+  ---@type table<string, fun(win:Edgy.Window)|vim.keymap.set.Opts|false>
   keys = {
     -- close window
     ["q"] = function(win)
