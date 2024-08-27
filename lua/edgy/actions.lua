@@ -9,7 +9,6 @@ function M.setup(win)
     return
   end
   vim.b[buf].edgy_keys = true
-  vim.print(Config.keys)
   for lhs, rhs in pairs(Config.keys) do
     if rhs then
       local ret = vim.fn.maparg(lhs, "n", false, true)
