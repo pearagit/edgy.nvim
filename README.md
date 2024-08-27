@@ -116,12 +116,15 @@ vim.opt.splitkeep = "screen"
   -- buffer-local keymaps to be added to edgebar buffers.
   -- Existing buffer-local keymaps will never be overridden.
   -- Set to false to disable a builtin.
-  ---@type table<string, fun(win:Edgy.Window)|false>
+  ---@type table<string, fun(win:Edgy.Window)|vim.keymap.set.Opts|false>
   keys = {
     -- close window
-    ["q"] = function(win)
-      win:close()
-    end,
+    ['q'] = {
+      callback = function(win)
+        win:close()
+      end,
+      desc = 'Close Edgy Window',
+    },
     -- hide window
     ["<c-q>"] = function(win)
       win:hide()
@@ -180,7 +183,7 @@ vim.opt.splitkeep = "screen"
 ### 👁️ `Edgy.View.Opts`
 
 | **Property**  | **Type**                       | **Description**                                                                                             |
-| --------------| ------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| ------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------- |
 | **ft**        | `string`                       | File type of the view                                                                                       |
 | **filter**    | `fun(buf:buffer, win:window)?` | Optional function to filter buffers and windows                                                             |
 | **title**     | `string?` or `fun():string`    | Optional title of the view. Defaults to the capitalized filetype                                            |
@@ -295,7 +298,7 @@ in your layout.
         ft = "Outline",
         pinned = true,
         open = "SymbolsOutlineOpen",
-        
+
       },
       -- any other neo-tree windows
       "neo-tree",
