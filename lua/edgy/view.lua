@@ -129,7 +129,7 @@ function M:hide_pinned(opts)
     if self.pinned_win.win == vim.api.nvim_get_current_win() then
       Editor:goto_main()
     end
-    vim.api.nvim_win_close(self.pinned_win.win, true)
+    vim.api.nvim_win_close(self.pinned_win.win, false)
     self.pinned_win = nil
   end
 end
